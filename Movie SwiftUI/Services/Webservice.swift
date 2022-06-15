@@ -33,8 +33,7 @@ class Webservice {
             return
         }
         
-        var request = URLRequest(url: url)
-        //let loginString = String(format: "%@:%@", "iosdeveloper", "novartis2022") 
+        var request = URLRequest(url: url) 
         let loginString = String(format: "%@:%@", username, password)
         
         let loginData = loginString.data(using: String.Encoding.utf8)!
