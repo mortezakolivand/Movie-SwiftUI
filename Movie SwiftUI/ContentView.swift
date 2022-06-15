@@ -8,9 +8,40 @@
 import SwiftUI
 
 struct ContentView: View {
+        
+    @StateObject private var loginVM = LoginViewModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+           
+        VStack {
+            Form {
+                HStack {
+                    Spacer()
+                    Image(systemName: "lock.fill")
+                }
+                TextField("Username", text: $loginVM.username)
+                SecureField("Password", text: $loginVM.password)
+               
+                HStack {
+                    Spacer()
+                    NavigationLink(destination:  MovieView(), isActive: $loginVM.isAuthenticated) {
+                        Text("")
+                    }
+                    Button("Login") {
+                        loginVM.login()
+                    }
+                  
+                    Spacer()
+                }
+            }.buttonStyle(PlainButtonStyle()) 
+            
+        } .onAppear(perform: {
+           
+        })
+        .navigationBarTitle("Login", displayMode: .inline)
+         
+        }
     }
 }
 
